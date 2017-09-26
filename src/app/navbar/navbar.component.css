@@ -1,0 +1,10 @@
+header {
+    height: 5rem;
+    background-color: #00997b;
+    padding-left: 1rem;
+}
+
+button.mat-raised-button {
+    height: 2rem;
+    margin-bottom: 1rem;
+}

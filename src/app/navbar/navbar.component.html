@@ -1,0 +1,17 @@
+<header class="container" fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="1rem" fxLayout.xs="column">
+    <button md-button [mdMenuTriggerFor]="customerMenu" fxFlexAlign.xs="start">Customer</button>
+    <button md-button [mdMenuTriggerFor]="loanMenu" fxFlexAlign.xs="start">Loan</button>
+</header>
+
+<md-menu #customerMenu="mdMenu">
+    <button md-menu-item>Customer Search</button>
+    <button md-menu-item>Customer Edit</button>
+    <button md-menu-item>New Customer</button>
+</md-menu>
+
+<md-menu #loanMenu="mdMenu">
+    <button md-menu-item>New Loan</button>
+    <button md-menu-item>Loan Payment</button>
+    <button md-menu-item>Loan Advance</button>
+</md-menu>
+
