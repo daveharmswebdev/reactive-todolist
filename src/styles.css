@@ -4,3 +4,23 @@
 body {
     font-family: Roboto, sans-serif;
 }
+
+/* As hex codes */
+
+.color-primary-0 { color: #00997B }	/* Main Primary color */
+.color-primary-1 { color: #42B59F }
+.color-primary-2 { color: #20A68C }
+.color-primary-3 { color: #007962 }
+.color-primary-4 { color: #005F4C }
+
+.color-secondary-1-0 { color: #EF9700 }	/* Main Secondary color (1) */
+.color-secondary-1-1 { color: #FFC35D }
+.color-secondary-1-2 { color: #FFB332 }
+.color-secondary-1-3 { color: #BE7800 }
+.color-secondary-1-4 { color: #945E00 }
+
+.color-secondary-2-0 { color: #E4001F }	/* Main Secondary color (2) */
+.color-secondary-2-1 { color: #F55A6F }
+.color-secondary-2-2 { color: #F32F4A }
+.color-secondary-2-3 { color: #B50019 }
+.color-secondary-2-4 { color: #8D0013 }
