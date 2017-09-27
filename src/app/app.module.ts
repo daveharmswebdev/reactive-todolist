@@ -23,6 +23,8 @@ import { NavbarComponent} from './navbar/navbar.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+import { AuthService } from './shared/auth.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +35,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase, 'ng-todo'),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
     RouterModule.forRoot([
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
@@ -44,7 +48,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatMenuModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
