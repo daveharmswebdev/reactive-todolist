@@ -4,3 +4,12 @@ md-card.mat-card {
     margin-top: 2rem;
     text-align: center;
 }
+
+md-card-footer.mat-card-footer {
+    text-align: center;
+}
+
+button.mat-raised-button {
+    width: 10rem;
+    margin: 1rem auto;
+}
