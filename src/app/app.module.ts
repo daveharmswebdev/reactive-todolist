@@ -24,13 +24,15 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { AuthService } from './shared/auth.service';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     WelcomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +40,7 @@ import { AuthService } from './shared/auth.service';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     RouterModule.forRoot([
+      { path: 'about', component: AboutComponent },
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', component: PageNotFoundComponent }
