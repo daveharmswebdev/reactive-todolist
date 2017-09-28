@@ -19,4 +19,9 @@ export class AppComponent implements OnInit {
       }
     );
   }
+
+  loginWithGoogle() {
+    this.auth.loginWithGoogle();
+  }
+
 }
