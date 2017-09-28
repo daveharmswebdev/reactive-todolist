@@ -9,21 +9,15 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 
 // Angular Material
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MdButtonModule,
-  MatMenuModule,
-  MatCardModule
-} from '@angular/material';
-
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from './shared/material.module';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent} from './navbar/navbar.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ListModule } from './list/list.module';
 
-import { AuthService } from './shared/auth.service';
+import { AuthService } from './user/auth.service';
 import { AboutComponent } from './about/about.component';
 
 @NgModule({
@@ -32,7 +26,7 @@ import { AboutComponent } from './about/about.component';
     NavbarComponent,
     WelcomeComponent,
     PageNotFoundComponent,
-    AboutComponent
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,11 +39,8 @@ import { AboutComponent } from './about/about.component';
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', component: PageNotFoundComponent }
     ]),
-    FlexLayoutModule,
-    BrowserAnimationsModule,
-    MdButtonModule,
-    MatMenuModule,
-    MatCardModule
+    MaterialModule,
+    ListModule
   ],
   providers: [
     AuthService

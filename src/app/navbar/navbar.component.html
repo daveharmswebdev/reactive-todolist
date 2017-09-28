@@ -11,6 +11,6 @@
 </header>
 
 <md-menu #customerMenu="mdMenu">
-    <button md-menu-item>Lists</button>
+    <button md-menu-item [routerLink]="['/list']">Lists</button>
     <button md-menu-item (click)="logOut()">Log Out</button>
 </md-menu>
