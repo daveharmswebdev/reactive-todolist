@@ -12,7 +12,7 @@ import { AuthGuard } from '../user/auth-guard.service';
         RouterModule.forChild([
             {
                 path: 'list',
-                canActivate: [ AuthGuard ],
+                // canActivate: [ AuthGuard ],
                 children: [
                     { path: '', component: ListComponent }
                 ]

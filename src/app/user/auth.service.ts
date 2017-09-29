@@ -25,6 +25,10 @@ export class AuthService {
         return this._currentUser;
     }
 
+    get currentUserName() {
+        return this._currentUser.email;
+    }
+
     get isLoggedIn() {
         return !!this._currentUser;
         // return this._currentUser && this._currentUser.email.length > 4;

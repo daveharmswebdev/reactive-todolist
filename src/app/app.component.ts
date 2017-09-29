@@ -15,7 +15,6 @@ export class AppComponent implements OnInit {
     this.auth.getAuthState().subscribe(
       user => {
         this.user = user;
-        console.log(this.user);
       }
     );
   }
