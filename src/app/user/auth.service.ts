@@ -8,17 +8,25 @@ import 'rxjs/add/observable/of';
 @Injectable()
 export class AuthService {
     private authState: Observable<firebase.User>;
-    private currentUser: firebase.User = null;
+    private _currentUser: firebase.User = null;
 
     constructor(public afAuth: AngularFireAuth) {
         this.authState = this.afAuth.authState;
         this.authState.subscribe(user => {
             if (user) {
-                this.currentUser = user;
+                this._currentUser = user;
             } else {
-                this.currentUser = null;
+                this._currentUser = null;
             }
         });
+    }
+
+    get currentUser() {
+        return this._currentUser;
+    }
+
+    get isLoggedIn() {
+        return this._currentUser && this._currentUser.email.length > 4;
     }
 
     getAuthState() {
