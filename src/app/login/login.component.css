@@ -1,0 +1,12 @@
+md-card.mat-card {
+    padding: 3rem;
+    background-color: #005f4c;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+button.mat-raised-button {
+    width: 10rem;
+    color: #00997b;
+    margin: 1rem auto;
+}

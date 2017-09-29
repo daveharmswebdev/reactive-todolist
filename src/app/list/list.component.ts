@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../user/auth.service';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import * as firebase from 'firebase/app';
 
 import { IList } from './list';
 
@@ -36,11 +39,31 @@ const List: IList[] = [
 })
 export class ListComponent implements OnInit {
   lists: IList[];
+  testLists;
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    public db: AngularFireDatabase
+  ) { }
 
   ngOnInit() {
-    this.lists = List;
+    this.db.list('/list').subscribe(lists => {
+      this.testLists = lists;
+      console.log(this.testLists);
+    });
   }
 
+  createList() {
+    const now = new Date();
+    const newList: IList = {
+      listId: '4',
+      userLinkId: this.authService.currentUserName,
+      createDate: now.toLocaleString(),
+      title: 'test',
+      comment: 'test important',
+      status: 'active'
+    };
+    console.log('click', newList);
+    this.db.list('/list').push(newList);
+  }
 }

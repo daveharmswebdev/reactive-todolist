@@ -27,10 +27,8 @@ export class NavbarComponent implements OnInit {
 
     isLoggedIn() {
         if (this.currentUser && this.currentUser.displayName) {
-            console.log(this.currentUser.displayName);
             return true;
         } else {
-            console.log('no display name');
             return false;
         }
     }

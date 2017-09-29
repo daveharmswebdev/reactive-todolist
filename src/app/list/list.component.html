@@ -6,8 +6,9 @@
     <md-card-content>
       <md-card-title>Lists:</md-card-title>
       <md-list>
-        <md-list-item *ngFor="let list of lists">{{list.title}} | {{list.comment}} | {{list.status}} | {{list.createDate}}</md-list-item>
+        <md-list-item *ngFor="let list of testLists">{{list.title}} | {{list.comment}} | {{list.status}} | {{list.createDate}}</md-list-item>
       </md-list>
     </md-card-content>
+    <button md-button (click)="createList()">Create List</button>
   </md-card>
 </div>
