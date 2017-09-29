@@ -26,7 +26,8 @@ export class AuthService {
     }
 
     get isLoggedIn() {
-        return this._currentUser && this._currentUser.email.length > 4;
+        return !!this._currentUser;
+        // return this._currentUser && this._currentUser.email.length > 4;
     }
 
     getAuthState() {

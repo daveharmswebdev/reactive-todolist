@@ -19,6 +19,7 @@ import { ListModule } from './list/list.module';
 
 import { AuthService } from './user/auth.service';
 import { AboutComponent } from './about/about.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -27,20 +28,22 @@ import { AboutComponent } from './about/about.component';
     WelcomeComponent,
     PageNotFoundComponent,
     AboutComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase, 'ng-todo'),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    ListModule,
     RouterModule.forRoot([
       { path: 'about', component: AboutComponent },
+      { path: 'login', component: LoginComponent },
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', component: PageNotFoundComponent }
     ]),
     MaterialModule,
-    ListModule
   ],
   providers: [
     AuthService
