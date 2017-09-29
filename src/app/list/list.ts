@@ -3,6 +3,6 @@ export interface IList {
     userLinkId: string;
     createDate: string;
     title: string;
-    commment: string;
+    comment: string;
     status: string;
 }
