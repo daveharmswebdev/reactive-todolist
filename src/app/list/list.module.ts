@@ -7,21 +7,21 @@ import { ListComponent } from './list.component';
 import { AuthGuard } from '../user/auth-guard.service';
 
 @NgModule({
-    imports: [
-        MaterialModule,
-        RouterModule.forChild([
-            {
-                path: 'list',
-                // canActivate: [ AuthGuard ],
-                children: [
-                    { path: '', component: ListComponent }
-                ]
-            }
-        ])
-    ],
-    declarations: [
-        ListComponent
-    ],
-    providers: [AuthGuard]
+  imports: [
+    MaterialModule,
+    RouterModule.forChild([
+      {
+        path: 'list',
+        canActivate: [AuthGuard],
+        children: [
+          { path: '', component: ListComponent }
+        ]
+      }
+    ])
+  ],
+  declarations: [
+    ListComponent
+  ],
+  providers: [AuthGuard]
 })
-export class ListModule {}
+export class ListModule { }

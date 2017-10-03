@@ -1,16 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
 // Firebase
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { environment } from '../environments/environment';
+import { FbModule } from './fb.module';
 
 // Angular Material
 import { MaterialModule } from './shared/material.module';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent} from './navbar/navbar.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -31,19 +28,11 @@ import { LoginComponent } from './login/login.component';
     LoginComponent,
   ],
   imports: [
+    FbModule,
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase, 'ng-todo'),
-    AngularFireAuthModule,
-    AngularFireDatabaseModule,
-    ListModule,
-    RouterModule.forRoot([
-      { path: 'about', component: AboutComponent },
-      { path: 'login', component: LoginComponent },
-      { path: 'welcome', component: WelcomeComponent },
-      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-      { path: '**', component: PageNotFoundComponent }
-    ]),
     MaterialModule,
+    ListModule,
+    AppRoutingModule
   ],
   providers: [
     AuthService
