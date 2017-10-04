@@ -25,7 +25,7 @@ import { LoginComponent } from './login/login.component';
     WelcomeComponent,
     PageNotFoundComponent,
     AboutComponent,
-    LoginComponent,
+    LoginComponent
   ],
   imports: [
     FbModule,
