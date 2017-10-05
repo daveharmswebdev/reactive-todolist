@@ -7,7 +7,7 @@ import 'rxjs/add/observable/of';
 
 @Injectable()
 export class AuthService {
-  private authState$: Observable<firebase.User>;
+  authState$: Observable<firebase.User>;
   private _currentUser: firebase.User = null;
 
   constructor(public afAuth: AngularFireAuth) {
