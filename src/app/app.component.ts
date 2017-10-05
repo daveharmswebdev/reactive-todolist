@@ -9,10 +9,10 @@ import { AuthService } from './user/auth.service';
 export class AppComponent implements OnInit {
   user = null;
 
-  constructor(private auth: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
-    this.auth.getAuthState().subscribe(
+    this.authService.getAuthState().subscribe(
       user => {
         this.user = user;
       }
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   }
 
   loginWithGoogle() {
-    this.auth.loginWithGoogle();
+    this.authService.loginWithGoogle();
   }
 
 }
