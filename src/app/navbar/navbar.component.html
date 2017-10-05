@@ -1,4 +1,8 @@
-<header class="container" fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="1rem" fxLayout.xs="column">
+<header class="container"
+        fxLayout="row"
+        fxLayoutAlign="start end"
+        fxLayoutGap="1rem"
+        fxLayout.xs="column">
     <button
         md-button
         [mdMenuTriggerFor]="customerMenu"
@@ -6,7 +10,11 @@
         *ngIf="(authService.authState$ | async)?.uid">
         {{this.currentUser?.displayName}}
     </button>
-    <button md-button fxFlexAlign.xs="start" (click)="loginWithGoogle()" *ngIf="!(authService.authState$ | async)?.uid">Log In with Google</button>
+    <button
+        md-button
+        fxFlexAlign.xs="start"
+        (click)="loginWithGoogle()"
+        *ngIf="!(authService.authState$ | async)?.uid">Log In with Google</button>
     <button md-button fxFlexAlign.xs="start" [routerLink]="['/about']">About</button>
 </header>
 
