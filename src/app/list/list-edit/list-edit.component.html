@@ -1,26 +1,26 @@
 <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center center">
   <md-card>
     <md-card-title>{{title}}</md-card-title>
-    <form [formGroup]="editForm" (ngSubmit)="edit()">
-      <md-form-field class="example-full-width">
+    <form [formGroup]="editForm" (ngSubmit)="buttonHandler()">
+      <md-form-field *ngIf="!isNewList">
         <input mdInput placeholder="List ID" formControlName="listId">
       </md-form-field>
-      <md-form-field class="example-full-width">
-        <input mdInput placeholder="List Title" formControlName="userLinkId">
+      <md-form-field>
+        <input mdInput placeholder="List Title" formControlName="title">
       </md-form-field>
-      <md-form-field class="example-full-width">
-        <input mdInput placeholder="User ID" formControlName="createDate">
+      <md-form-field *ngIf="!isNewList">
+        <input mdInput placeholder="User ID" formControlName="userLinkId">
       </md-form-field>
-      <md-form-field class="example-full-width">
-        <input mdInput placeholder="Creation Date" formControlName="title">
+      <md-form-field *ngIf="!isNewList">
+        <input mdInput placeholder="Creation Date" formControlName="createDate">
       </md-form-field>
-      <md-form-field class="example-full-width">
+      <md-form-field>
         <input mdInput placeholder="Comment" formControlName="comment">
       </md-form-field>
-      <md-form-field class="example-full-width">
+      <md-form-field *ngIf="!isNewList">
         <input mdInput placeholder="status" formControlName="status">
       </md-form-field>
-      <button md-button>Edit</button>
+      <button md-button>{{buttonText}}</button>
     </form>
   </md-card>
 </div>

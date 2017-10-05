@@ -13,9 +13,10 @@ import {
 })
 export class ListEditComponent implements OnInit {
   listId;
-  isNewList;
+  isNewList = false;
   editForm: FormGroup;
-  title = 'List Edit';
+  title;
+  buttonText;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,19 +24,49 @@ export class ListEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.listId = this.route.snapshot.params['id'];
-    this.isNewList = this.listId === 'new';
+    this.route.params.subscribe(params => {
+      params['id'] === 'new'
+      ? this.isNewList = true
+      : this.listId = params['id'];
+
+      this.buttonText = this.isNewList ? 'Create' : 'Edit';
+      this.title = this.isNewList ? 'New List' : 'Edit List';
+    });
+
+    this.isNewList ? this.showCleanForm() : this.showEditForm()
+  }
+
+  showEditForm() {
     this.editForm = this.fb.group({
-      listId: '-KvDyCilfjsfi95vfi02',
-      userLinkId: 'daveharmswebdev@gmail.com',
-      createDate: '10/3/2017',
-      title: 'Honey Do',
-      comment: 'Important',
-      status: 'Active'
+      listId: [{ value: '', disabled: this.isNewList}],
+      userLinkId: [{ value: '', disabled: this.isNewList}],
+      createDate: [{ value: '', disabled: this.isNewList}],
+      title: '',
+      comment: '',
+      status: [{ value: '', disabled: this.isNewList}],
     });
   }
 
-  edit() {
-    console.log('edit', this.editForm.value);
+  showCleanForm(): void {
+    this.editForm = this.fb.group({
+      listId: [{ value: '', disabled: this.isNewList}],
+      userLinkId: [{ value: '', disabled: this.isNewList}],
+      createDate: [{ value: '', disabled: this.isNewList}],
+      title: '',
+      comment: '',
+      status: [{ value: '', disabled: this.isNewList}],
+    });
+  }
+
+  buttonHandler() {
+    this.isNewList ? this.createList() : this.editList();
+  }
+
+  createList() {
+    console.log('createList()', this.buttonText, this.editForm.value);
+  }
+
+  editList() {
+    console.log('editList()', this.buttonText, this.editForm.value);
   }
 }
