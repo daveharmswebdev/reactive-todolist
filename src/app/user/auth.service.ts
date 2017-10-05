@@ -23,21 +23,6 @@ export class AuthService {
     });
   }
 
-  get currentUser() {
-    return this._currentUser;
-  }
-
-  get currentUserName() {
-    return this._currentUser.email;
-  }
-
-  isLoggedIn() {
-    console.log('auth service', this._currentUser);
-    console.log('auth service', !!this._currentUser);
-    return !!this._currentUser;
-    // return this._currentUser && this._currentUser.email.length > 4;
-  }
-
   getAuthState() {
     if (this.authState$) {
       return this.authState$;
