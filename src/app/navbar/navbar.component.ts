@@ -25,14 +25,6 @@ export class NavbarComponent implements OnInit {
         });
     }
 
-    isLoggedIn() {
-        if (this.currentUser && this.currentUser.displayName) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     loginWithGoogle() {
         this.authService.loginWithGoogle();
     }
