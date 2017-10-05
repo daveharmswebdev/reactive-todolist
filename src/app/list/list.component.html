@@ -1,14 +1,16 @@
-<div class="container" 
-     fxLayout 
-     fxLayout.xs="column" 
+<div class="container"
+     fxLayout
+     fxLayout.xs="column"
      fxLayoutAlign="center center">
   <md-card>
     <md-card-content>
       <md-card-title>Lists:</md-card-title>
       <md-list>
-        <md-list-item *ngFor="let list of testLists">{{list.title}} | {{list.comment}} | {{list.status}} | {{list.createDate}}</md-list-item>
+        <md-list-item *ngFor="let list of testLists">
+          {{list.title}} | {{list.comment}} | {{list.status}} | {{list.createDate}} <button md-button [routerLink]="['/list', list.$key,'edit']">Edit</button>
+        </md-list-item>
       </md-list>
     </md-card-content>
-    <button md-button (click)="createList()">Create List</button>
+    <button md-button [routerLink]="['/list/new/edit']">Create List</button>
   </md-card>
 </div>

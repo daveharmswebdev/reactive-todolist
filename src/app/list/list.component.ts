@@ -53,17 +53,4 @@ export class ListComponent implements OnInit {
     });
   }
 
-  createList() {
-    const now = new Date();
-    const newList: IList = {
-      listId: '4',
-      userLinkId: this.authService.currentUserName,
-      createDate: now.toLocaleString(),
-      title: 'test',
-      comment: 'test important',
-      status: 'active'
-    };
-    console.log('click', newList);
-    this.db.list('/list').push(newList);
-  }
 }
