@@ -65,11 +65,11 @@ export class ListEditComponent implements OnInit {
   showCleanForm(): void {
     this.editForm = this.fb.group({
       listId: [{ value: '', disabled: this.isNewList}],
-      userLinkId: [{ value: '', disabled: this.isNewList}],
+      userLinkId: [{ value: 'wdave.harms@gmail.com', disabled: this.isNewList}],
       createDate: [{ value: '', disabled: this.isNewList}],
       title: '',
       comment: '',
-      status: [{ value: '', disabled: this.isNewList}],
+      status: [{ value: 'active', disabled: this.isNewList}],
     });
   }
 
@@ -78,7 +78,13 @@ export class ListEditComponent implements OnInit {
   }
 
   createList() {
-    console.log('createList()', this.buttonText, this.editForm.value);
+    const createDate = new Date();
+    const newList = Object.assign(
+      {},
+      this.editForm.getRawValue(),
+      { createDate: createDate.toString()}
+    );
+    this.listService.createList(newList);
   }
 
   editList() {
