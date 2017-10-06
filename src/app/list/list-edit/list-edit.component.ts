@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FirebaseObjectObservable } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
 
 import {
   FormGroup,
   FormBuilder
 } from '@angular/forms';
+
+import { ListService } from './../list.service';
+import { IList } from '../list';
 
 @Component({
   selector: 'app-list-edit',
@@ -17,33 +22,43 @@ export class ListEditComponent implements OnInit {
   editForm: FormGroup;
   title;
   buttonText;
+  list$: FirebaseObjectObservable<IList> | any;
 
   constructor(
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private listService: ListService
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      params['id'] === 'new'
-      ? this.isNewList = true
-      : this.listId = params['id'];
-
-      this.buttonText = this.isNewList ? 'Create' : 'Edit';
-      this.title = this.isNewList ? 'New List' : 'Edit List';
+      if (params['id'] === 'new') {
+        this.isNewList = true;
+        this.title = 'New List';
+        this.buttonText = 'Create';
+        this.list$ = Observable.of({}) as FirebaseObjectObservable<IList>;
+        this.showCleanForm();
+      } else {
+        this.listId = params['id'];
+        this.isNewList = false;
+        this.title = 'Edit List';
+        this.buttonText = 'Edit';
+        this.listService.getList(this.listId).subscribe(list => {
+          this.list$ = list;
+          this.editForm = this.showEditForm();
+        });
+      }
     });
-
-    this.isNewList ? this.showCleanForm() : this.showEditForm()
   }
 
   showEditForm() {
-    this.editForm = this.fb.group({
-      listId: [{ value: '', disabled: this.isNewList}],
-      userLinkId: [{ value: '', disabled: this.isNewList}],
-      createDate: [{ value: '', disabled: this.isNewList}],
-      title: '',
-      comment: '',
-      status: [{ value: '', disabled: this.isNewList}],
+    return this.fb.group({
+      listId: [{value: this.listId, disabled: true}],
+      userLinkId: [{value: this.list$.userLinkId, disabled: true}],
+      createDate: [{value: this.list$.createDate, disabled: true}],
+      title: this.list$.title,
+      comment: this.list$.comment,
+      status: this.list$.status,
     });
   }
 
@@ -67,6 +82,7 @@ export class ListEditComponent implements OnInit {
   }
 
   editList() {
-    console.log('editList()', this.buttonText, this.editForm.value);
+    console.log('editList()', this.buttonText, this.editForm.getRawValue());
+    this.listService.editList(this.editForm.getRawValue());
   }
 }
