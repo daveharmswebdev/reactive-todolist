@@ -7,6 +7,7 @@ import { MaterialModule } from '../shared/material.module';
 import { ListComponent } from './list.component';
 import { ListEditComponent } from './list-edit/list-edit.component';
 import { AuthGuard } from '../user/auth.guard';
+import { ListService } from './list.service';
 
 @NgModule({
   imports: [
@@ -27,6 +28,9 @@ import { AuthGuard } from '../user/auth.guard';
     ListComponent,
     ListEditComponent
   ],
-  providers: [AuthGuard]
+  providers: [
+    AuthGuard,
+    ListService
+  ]
 })
 export class ListModule { }
