@@ -3,6 +3,7 @@ import {
   AngularFireDatabase,
   FirebaseListObservable
 } from 'angularfire2/database';
+import { Router } from '@angular/router';
 
 import { IList } from './list';
 
@@ -13,14 +14,17 @@ import 'rxjs/add/operator/catch';
 export class ListService {
   list$: FirebaseListObservable<IList[]>;
 
-  constructor(private db: AngularFireDatabase) {
+  constructor(
+    private db: AngularFireDatabase,
+    private router: Router
+  ) {
     this.list$ = this.db.list(`list`);
   }
 
   // create
   createList(newList) {
     return this.list$.push(newList)
-      .then(_ => console.log('success'))
+      .then(_ => this.router.navigate(['/list']))
       .catch(error => console.log(error));
   }
 
@@ -34,14 +38,14 @@ export class ListService {
   // update
   editList(updatedList: IList) {
     return this.list$.update(updatedList.listId, updatedList)
-      .then(_ => console.log('success'))
+      .then(_ => this.router.navigate(['/list']))
       .catch(error => console.log(error));
   }
 
   // delete
-  removeList(list: IList) {
-    return this.list$.remove(list.listId)
-      .then(_ => console.log('success'))
+  removeList(listId) {
+    return this.list$.remove(listId)
+      .then(_ => this.router.navigate(['/list']))
       .catch(error => console.log(error));
   }
 

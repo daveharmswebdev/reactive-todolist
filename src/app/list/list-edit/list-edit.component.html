@@ -22,6 +22,7 @@
       </md-form-field>
       <button md-button>{{buttonText}}</button>
     </form>
+    <button *ngIf="!isNewList" md-button (click)="removeList()">Delete</button>
   </md-card>
 
   <p>current list: {{list$?.listId}}</p>

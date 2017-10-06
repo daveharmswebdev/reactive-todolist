@@ -91,4 +91,8 @@ export class ListEditComponent implements OnInit {
     console.log('editList()', this.buttonText, this.editForm.getRawValue());
     this.listService.editList(this.editForm.getRawValue());
   }
+
+  removeList() {
+    this.listService.removeList(this.listId);
+  }
 }
